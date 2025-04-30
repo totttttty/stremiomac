@@ -24,6 +24,8 @@
                 var navBars = targetDocument.querySelectorAll('nav[class*="horizontal-nav-bar"]');
                 var backgroundContainers = targetDocument.querySelectorAll('div[class*="background-container"]');
 
+                var backgroundImage = targetDocument.querySelector('div[class*="background-image-layer"]');
+
                 if (navBars.length > 0) {
                     navBars.forEach(navBar => {
                         navBar.setAttribute('data-tauri-drag-region', '');
@@ -31,7 +33,6 @@
                     console.log('Draggable region set on ' + navBars.length + ' nav bar(s).');
                 } else {
                     console.warn('Nav bar elements not found yet for drag region.');
-                    return false;
                 }
 
                 if (backgroundContainers.length > 0) {
@@ -42,7 +43,12 @@
                     console.log('Background styles applied to ' + backgroundContainers.length + ' container(s).');
                 } else {
                     console.warn('Background container elements not found yet.');
-                    return false;
+                }
+
+                if(backgroundImage != null)
+                {
+                    console.log('Background image style applied.');
+                    backgroundImage.style.opacity = "0.75";
                 }
 
                 return true;
